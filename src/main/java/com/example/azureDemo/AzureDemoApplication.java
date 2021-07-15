@@ -15,7 +15,7 @@ public class AzureDemoApplication {
 	
 	@GetMapping("/welcome")
 	public String welcome() {
-	  return "Good Luck For the first app on Azure !!";	
+	  return "Good Luck For the First application on Azure !!!!";	
 			  
 	}
 
