@@ -1,5 +1,7 @@
 package com.example.azureDemo;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +15,19 @@ public class AzureDemoApplication {
 		SpringApplication.run(AzureDemoApplication.class, args);
 	}
 	
-	@GetMapping("/welcome")
+	@GetMapping("/getCourses")
 	public String welcome() {
-	  return "Good Luck For the First application on Azure !!!!";	
+		StringBuilder courseDetails = new StringBuilder();
+		List<Course> courses = DBConnection.getCourses();
+		if(courses != null && !courses.isEmpty()) {
+			courseDetails.append("CourseId---CouserName---Rating").append("\n");
+			for(Course course : courses) {
+				courseDetails.append(course.getCourseId()).append("---").append(course.getCourseName()).append("---").append(course.getRating()).append("\n");
+			}
+			
+		}
+		
+	  return courseDetails.toString();	
 			  
 	}
 
