@@ -14,10 +14,10 @@ public class DBConnection {
 		
 		List<Course> listOfCourses = null;
 		
-			String dbURL = "jdbc:sqlserver://dbservermpyla.database.windows.net\\myFirstDb ";
+			String dbURL = "jdbc:sqlserver://dbservermpyla.database.windows.net:1433;database=myFirstDb;user=arunvasavi@dbservermpyla;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 			 String user = "arunvasavi";
 	         String pass = "adminUser@2021";
-	         try(Connection conn = DriverManager.getConnection(dbURL, user, pass)) {
+	         try(Connection conn = DriverManager.getConnection(dbURL)) {
 	        	 if(conn != null) {
 	        		String query = "select * from course";
 	        		Statement stmt = conn.createStatement();
